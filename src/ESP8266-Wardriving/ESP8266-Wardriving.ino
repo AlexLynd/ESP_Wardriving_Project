@@ -6,7 +6,7 @@
 #include <TinyGPS++.h>
 #include <TimeLib.h>   
 
-#define UTC_offset -7  // PDT
+#define UTC_offset +7  // PDT
 #define SD_CS      D8
 
 Adafruit_SSD1306 display(128, 64, &Wire, -1);  // shared reset
@@ -117,7 +117,7 @@ void lookForNetworks() {
         logFile.print(tinyGPS.location.lat(), 6); logFile.print(',');
         logFile.print(tinyGPS.location.lng(), 6); logFile.print(',');
         display.println("Networks: " + String(networks));
-        display.print(String(int(tinyGPS.speed.mph())) + " MPH");
+        display.print(String(int(tinyGPS.speed.kmph())) + " K/H");
         display.println(" Sats: " + String(tinyGPS.satellites.value()));
         display.println("(" + String(tinyGPS.location.lat(), 5) + "," + String(tinyGPS.location.lng(), 5) + ")");
         logFile.print(tinyGPS.altitude.meters(), 1); logFile.print(',');
